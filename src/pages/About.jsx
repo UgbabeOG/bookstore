@@ -178,7 +178,7 @@ function About() {
               className="flex flex-col max-w-[30rem] md:w-[30rem] rounded-md bg-white p-4 text-slate-500 gap-2"
             >
               <h3 className="text-2xl font-bold text-indigo-500 md:text-3xl ">
-                try our nationality detector{" "}
+                Try our nationality detector{" "}
                 <span className="text-orange-300">free!</span>
               </h3>
               <label htmlFor="personName" className="pt-5 text-sm text-inherit">
