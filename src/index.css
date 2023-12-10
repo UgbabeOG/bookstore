@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .heading-text {
+    @apply text-lg sm:text-2xl md:text-3xl font-bold leading-tight;
+  }
+}
+@layer utilities {
+  .custom-loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(rgb(13, 0, 0) 10%, #766df4) content-box;
+    mask: repeating-conic-gradient(
+        #0c000000 0deg,
+        #0b0000 1deg 20deg,
+        #0c000000 21deg 36deg
+      ),
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - 18px),
+        #000 calc(100% - 16px)
+      );
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: s4 1s infinite steps(10);
+  }
+  @keyframes s4 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .s3 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(black 10%, #766df4);
+    mask: radial-gradient(farthest-side, black calc(100% - 8px), black 0);
+    animation: s3 1s infinite linear;
+  }
+
+  @keyframes s3 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
 }
