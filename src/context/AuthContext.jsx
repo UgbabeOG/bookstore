@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import bcryptjs from "bcryptjs";
 import { toast } from "react-hot-toast";
-export const AuthContext = createContext();
+const AuthContext = createContext();
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("current_user")) || null
@@ -76,4 +76,5 @@ function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+export const useAuth = () => useContext(AuthContext);
 export default AuthProvider;

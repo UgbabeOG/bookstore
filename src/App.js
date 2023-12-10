@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, useContext } from "react";
+import React, { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import { AuthContext,  } from "./context/AuthContext";
+import { useAuth } from "./context/AuthContext";
 import {
   createHashRouter,
   RouterProvider,
@@ -25,7 +25,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 
 function App() {
-  const { currentUser, darkMode } = useContext(AuthContext);
+  const { currentUser, darkMode } = useAuth();
   const PrivateRoute = () => {
     return (
       <Suspense fallback={<div className="custom-loader"></div>}>
@@ -106,7 +106,7 @@ function App() {
     },
   ]);
   return (
-    <div className={darkMode? "dark" : "bg-slate-50"}>
+    <div className={darkMode ? "dark" : "bg-slate-50"}>
       <Toaster />
       <RouterProvider router={myRoutes}></RouterProvider>
     </div>

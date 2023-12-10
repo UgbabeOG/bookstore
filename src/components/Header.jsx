@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { links } from "../data";
 import Hamburger from "hamburger-react";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { FaStarAndCrescent, FaSun } from "react-icons/fa";
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const { currentUser, darkMode, handleDarkMode } = useContext(AuthContext);
+  const { currentUser, darkMode, handleDarkMode } = useAuth();
 
   const location = useLocation();
   //   const headerLinks = [];

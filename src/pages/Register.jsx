@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import PhoneInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 import "react-phone-number-input/style.css";
@@ -15,7 +15,7 @@ function Register() {
     password: "",
   });
 
-  const { register } = useContext(AuthContext);
+  const { register } = useAuth();
   const handleOnChange = (e) => {
     // console.log({ name: e.target.name, value: e.target.value });
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -33,14 +33,14 @@ function Register() {
           <img
             src={Wizkid}
             alt="ejanla"
-            className="absolute top-0 left-0 h-full w-full object-cover"
+            className="absolute top-0 left-0 object-cover w-full h-full"
           />
           <div className="relative container max-w-[960px] mx-auto flex gap-5 flex-col md:flex-row-reverse">
             <div className="flex flex-col text-white">
-              <p className="text-inherit text-sm md:text-base font-medium opacity-80">
+              <p className="text-sm font-medium text-inherit md:text-base opacity-80">
                 reach out to us
               </p>
-              <p className="text-inherit text-xl md:3xl font-bold  uppercase">
+              <p className="text-xl font-bold uppercase text-inherit md:3xl">
                 bookave team
               </p>
             </div>
@@ -50,7 +50,7 @@ function Register() {
               id="formForContact"
               className="flex flex-col max-w-[30rem] md:w-[30rem] justify-center rounded-md bg-white p-8 text-slate-500 gap-2"
             >
-              <label htmlFor="fullname" className="text-inherit pt-5 text-sm">
+              <label htmlFor="fullname" className="pt-5 text-sm text-inherit">
                 Full Name
               </label>
               <input
@@ -61,9 +61,9 @@ function Register() {
                 autoComplete="true"
                 type="text"
                 id="fullname"
-                className="py-1 px-4 border-2 border-slate-100 rounded-sm text-inherit"
+                className="px-4 py-1 border-2 rounded-sm border-slate-100 text-inherit"
               />
-              <label htmlFor="username" className="text-inherit pt-5 text-sm">
+              <label htmlFor="username" className="pt-5 text-sm text-inherit">
                 Username
               </label>
               <input
@@ -74,9 +74,9 @@ function Register() {
                 autoComplete="true"
                 type="text"
                 id="username"
-                className="py-1 px-4 border-2 border-slate-100 rounded-sm text-inherit"
+                className="px-4 py-1 border-2 rounded-sm border-slate-100 text-inherit"
               />
-              <label htmlFor="email" className="text-inherit pt-5 text-sm">
+              <label htmlFor="email" className="pt-5 text-sm text-inherit">
                 Email
               </label>
               <input
@@ -87,7 +87,7 @@ function Register() {
                 autoComplete="true"
                 type="email"
                 id="email"
-                className="py-1 px-4 border-2 border-slate-100 rounded-sm text-inherit"
+                className="px-4 py-1 border-2 rounded-sm border-slate-100 text-inherit"
               />
               <PhoneInput
                 onChange={(value) =>
@@ -96,14 +96,14 @@ function Register() {
                 international
                 withCountryCallingCode={true}
                 defaultCountry="NG"
-                className="outline-0 rounded-sm flex text-inherit border-slate-100 border-2 px-4 py-1"
+                className="flex px-4 py-1 border-2 rounded-sm outline-0 text-inherit border-slate-100"
                 countryCallingCodeEditable={false}
                 flags={flags}
                 limitMaxLength={true}
                 name="phone"
               />
 
-              <label htmlFor="password" className="text-inherit text-sm">
+              <label htmlFor="password" className="text-sm text-inherit">
                 password
               </label>
               <input
@@ -114,7 +114,7 @@ function Register() {
                 autoComplete="true"
                 type="password"
                 id="password"
-                className="py-1 px-4 border-2 border-slate-100 rounded-sm text-inherit"
+                className="px-4 py-1 border-2 rounded-sm border-slate-100 text-inherit"
               />
               <button className="px-8 py-2 text-white rounded-[.5rem] shadow md shadow-red-500 bg-red-500 text-center w-max">
                 Register
